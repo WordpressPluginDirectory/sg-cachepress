@@ -1,14 +1,14 @@
-=== Speed Optimizer - The All-In-One WordPress Performance-Boosting Plugin ===
+=== Speed Optimizer - The All-In-One Performance-Boosting Plugin ===
 Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova, ignatggeorgiev
-Tags: nginx, caching, speed, memcache, memcached, performance, siteground, free, supercacher
+Tags: nginx, caching, speed, performance, siteground
 Requires at least: 4.7
 Requires PHP: 7.0
-Tested up to: 6.5
-Stable tag: 7.6.0
+Tested up to: 6.6
+Stable tag: 7.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Boost your website performance and page speed, and increase conversions with powerful caching, frontend, media, and environment optimizations. Free to use and easy to set up.
+Boost your website performance and page speed, and increase conversions with powerful caching, frontend, media, and environment optimizations.
 
 == Description ==
 
@@ -117,6 +117,27 @@ Our plugin uses a cookie in order to function properly. It does not store person
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Optimizer listing
 
 == Changelog ==
+
+= Version 7.6.3 =
+Release Date: Aug 1st, 2024
+
+* Improved file-based cache purge
+* Improved plugin config
+* Fixed deprecated warnings in custom WP-CLI commands
+
+= Version 7.6.2 =
+Release Date: July 10th, 2024
+
+* Improved Disable Emojis optimization
+* Improved JS combination
+* Improved Comment cache purge handling
+* Improved JS Minification script handling
+
+= Version 7.6.1 =
+Release Date: June 25th, 2024
+
+* Improved Multisite performance
+* Improved JS combination
 
 = Version 7.6.0 =
 Release Date: May 22nd, 2024

@@ -3,7 +3,7 @@
         'name' => 'siteground/sg-cachepress',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => 'e385f9b747220700c07adff85d2bbfefe72cc02e',
+        'reference' => '193a066b701d68e3db6f0acecb630643f6ebdf8e',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -81,7 +81,7 @@
         'siteground/sg-cachepress' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => 'e385f9b747220700c07adff85d2bbfefe72cc02e',
+            'reference' => '193a066b701d68e3db6f0acecb630643f6ebdf8e',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
