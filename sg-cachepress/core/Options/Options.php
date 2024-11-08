@@ -227,7 +227,7 @@ class Options {
 
 		if ( is_multisite() ) {
 
-			$site_options = $this->wpdb->get_results(
+			$sitemeta_options = $this->wpdb->get_results(
 				$this->wpdb->prepare( //phpcs:ignore
 					"
 					SELECT REPLACE( meta_key, 'siteground_optimizer_', '' ) AS name, meta_value AS value

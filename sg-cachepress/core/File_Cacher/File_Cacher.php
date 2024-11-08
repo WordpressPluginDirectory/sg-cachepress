@@ -492,6 +492,7 @@ class File_Cacher extends Supercacher {
 	 */
 	public static function purge_cache_request( $url, $include_child_paths = true ) {
 		$self = self::get_instance();
+		global $wp_filesystem;
 
 		// Check if the URL is excluded, exit early if excluded.
 		if ( $self->is_url_excluded( $url ) ) {
@@ -505,14 +506,18 @@ class File_Cacher extends Supercacher {
 			return false;
 		}
 
-		$cache_dir = scandir( $cache_dir );
+		// Scan the dir.
+		$cache_dir = $wp_filesystem->dirlist( $cache_dir );
 
-		// Bail if scandir fails to scan.
+		// Bail if dirlist fails to scan.
 		if ( ! $cache_dir ) {
 			return false;
 		}
 
-		$subdirs = array_diff( $cache_dir, array( '..', '.' ) );
+		// Extract the subdirs array.
+		foreach ( $cache_dir as $file ) {
+			$subdirs[] = $file['name'];
+		}
 
 		$path = wp_parse_url( $url, PHP_URL_PATH );
 

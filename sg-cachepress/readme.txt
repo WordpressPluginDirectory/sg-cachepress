@@ -3,8 +3,8 @@ Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova, 
 Tags: nginx, caching, speed, performance, siteground
 Requires at least: 4.7
 Requires PHP: 7.0
-Tested up to: 6.6
-Stable tag: 7.6.8
+Tested up to: 6.7
+Stable tag: 7.7.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -117,6 +117,12 @@ Our plugin uses a cookie in order to function properly. It does not store person
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Optimizer listing
 
 == Changelog ==
+= Version 7.7.0 =
+Release Date: Nov 7th, 2024
+
+* Disable Emojis optimization improvements
+* File-Caching improvements
+
 = Version 7.6.8 =
 Release Date: Oct 23rd, 2024
 
