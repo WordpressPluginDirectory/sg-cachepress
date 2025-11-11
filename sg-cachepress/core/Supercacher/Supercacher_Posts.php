@@ -135,6 +135,12 @@ class Supercacher_Posts {
 	 * @param  int $post_id The post id.
 	 */
 	public function purge_all_post_cache( $post_id ) {
+
+		// Check if the cache for that $post_id is already flushed.
+		if ( true === $this->is_post_cache_already_flushed( $post_id ) ) {
+			return;
+		}
+
 		// Get the post.
 		$post = get_post( $post_id );
 
@@ -222,6 +228,29 @@ class Supercacher_Posts {
 			}
 			return true;
 		}
+
+		return false;
+	}
+
+	/**
+	 * Limit the cache purge requests to one cache purge request per post.
+	 *
+	 * @param int $post_id The post id.
+	 *
+	 * @return boolean     True if cache is already purged for that post, false if not.
+	 */
+	public function is_post_cache_already_flushed( $post_id ) {
+
+		// Collect the post_ids in a static array.
+		static $purged_post_ids = array();
+
+		// Check if its the first time the function runs with that $post_id.
+		if ( in_array( $post_id, $purged_post_ids ) ) {
+			return true;
+		}
+
+		// Add the post_id to the static array.
+		$purged_post_ids[] = $post_id;
 
 		return false;
 	}
