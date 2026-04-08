@@ -2,7 +2,7 @@
 /*
 Plugin Name: Memcached
 Description: Memcached Dropin for SGO
-Version: 1.0.1
+Version: 1.0.2
 
 Install this file to wp-content/object-cache.php
 */
@@ -265,6 +265,17 @@ class WP_Object_Cache {
 		if ( 'checkthedatabaseplease' === $value ) {
 			unset( $this->cache[$key] );
 			$value = false;
+		}
+
+
+		if ( is_multisite() && class_exists( 'PLL_Base' ) ) {
+			if ( false !== strpos( $group, 'relationships' ) ) {
+				return array();
+			}
+		}
+
+		if ( false !== strpos( $key, 'wcboost' ) ) {
+			return false;
 		}
 
 		return $value;
