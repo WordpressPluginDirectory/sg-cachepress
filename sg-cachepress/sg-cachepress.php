@@ -10,7 +10,7 @@
  * Plugin Name:       Speed Optimizer
  * Plugin URI:        https://siteground.com
  * Description:       This plugin will link your WordPress application with all the performance optimizations provided by SiteGround
- * Version:           7.7.8
+ * Version:           7.7.10
  * Author:            SiteGround
  * Author URI:        https://www.siteground.com
  * Text Domain:       sg-cachepress
@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Define version constant.
 if ( ! defined( __NAMESPACE__ . '\VERSION' ) ) {
-	define( __NAMESPACE__ . '\VERSION', '7.7.8' );
+	define( __NAMESPACE__ . '\VERSION', '7.7.10' );
 }
 
 // Define slug constant.
