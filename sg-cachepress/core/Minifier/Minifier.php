@@ -303,6 +303,7 @@ class Minifier {
 		foreach ( $styles->to_do as $handle ) {
 			// Skip styles.
 			if (
+				! isset( $wp_styles->registered[ $handle ]->src ) || // if not set/null.
 				stripos( $wp_styles->registered[ $handle ]->src, '.min.css' ) !== false || // If the file is minified already.
 				false === $wp_styles->registered[ $handle ]->src || // If the source is empty.
 				in_array( $handle, $excluded_styles ) || // If the file is ignored.

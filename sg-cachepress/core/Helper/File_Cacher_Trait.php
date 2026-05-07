@@ -14,7 +14,7 @@ trait File_Cacher_Trait {
 	 * @return bool Returns true if the request is cacheable, false if not.
 	 */
 	public function is_cacheable() {
-		if ( $_SERVER['REQUEST_METHOD'] !== 'GET' ) { //phpcs:ignore
+		if ( isset( $_SERVER['REQUEST_METHOD'] ) && $_SERVER['REQUEST_METHOD'] !== 'GET' ) { //phpcs:ignore
 			return;
 		}
 

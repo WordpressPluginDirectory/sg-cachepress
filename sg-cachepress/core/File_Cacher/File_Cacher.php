@@ -152,7 +152,8 @@ class File_Cacher extends Supercacher {
 		$this->supercacher_posts    = new Supercacher_Posts();
 		$this->supercacher_terms    = new Supercacher_Terms();
 
-		$this->logged_in_cache = (int) get_option( 'siteground_optimizer_logged_in_cache' );
+		$this->logged_in_cache     = (int) get_option( 'siteground_optimizer_logged_in_cache' );
+		$this->bypass_query_params = apply_filters( 'sgo_bypass_query_params', $this->bypass_query_params );
 	}
 
 	/**
@@ -351,7 +352,6 @@ class File_Cacher extends Supercacher {
 			header( 'SG-F-Cache: BYPASS' );
 			return;
 		}
-
 
 		$path = $this->get_cache_path();
 
@@ -815,7 +815,7 @@ class File_Cacher extends Supercacher {
 		// Prepare the config.
 		$config = array(
 			'ignored_query_params' => apply_filters( 'sgo_ignored_query_params', $this->ignored_query_params ),
-			'bypass_query_params'  => apply_filters( 'sgo_bypass_query_params', $this->bypass_query_params ),
+			'bypass_query_params'  => $this->bypass_query_params,
 			'bypass_cookies'       => apply_filters( 'sgo_bypass_cookies', $this->bypass_cookies ),
 			'output_dir'           => $this->get_cache_dir(),
 			'logged_in_cache'      => (int) get_option( 'siteground_optimizer_logged_in_cache' ),
@@ -877,8 +877,7 @@ class File_Cacher extends Supercacher {
 	 */
 	public function get_excluded_urls_regex() {
 		// Get excluded urls.
-		$parts = \get_option( 'siteground_optimizer_excluded_urls', array() );
-
+		$parts = apply_filters( 'sgo_exclude_urls_from_cache', \get_option( 'siteground_optimizer_excluded_urls', array() ) );
 
 		$ecommerce_pages = array();
 

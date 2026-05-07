@@ -43,6 +43,7 @@ class Admin {
 		'onthego-admin-styles', // Toolset Types
 		'foogra-icons', // Foogra Theme
 		'elegant', // Elegant Icons-set
+		'admin-icons-font', // Yoga-fit Тheme
 	);
 
 	/**

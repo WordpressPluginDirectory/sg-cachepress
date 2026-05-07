@@ -99,7 +99,7 @@ abstract class Abstract_Lazy_Load {
 					continue;
 				}
 
-				$orig_item = str_replace( $classes, $classes . ' lazyload', $item );
+				$orig_item = preg_replace( '/(class=["\'])([^"\']*)(["\'])/i', '$1$2 lazyload$3', $item );
 			} else {
 				$orig_item = $this->add_lazyload_class( $item );
 

@@ -4,7 +4,7 @@ Tags: nginx, caching, speed, performance, siteground
 Requires at least: 4.7
 Requires PHP: 7.0
 Tested up to: 6.9
-Stable tag: 7.7.10
+Stable tag: 7.7.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -117,6 +117,11 @@ Our plugin uses a cookie in order to function properly. It does not store person
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Optimizer listing
 
 == Changelog ==
+= Version 7.7.11 =
+Release Date: May 7th, 2026
+* File Caching improvements
+* Lazy Loading improvements
+* CSS minifier improvements
 
 = Version 7.7.10 =
 Release Date: May 5th, 2026

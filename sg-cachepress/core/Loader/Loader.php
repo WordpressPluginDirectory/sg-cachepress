@@ -392,17 +392,11 @@ class Loader {
 		// Check the size of the assets dir.
 		add_action( 'siteground_optimizer_check_assets_dir', array( $this->front_end_optimization, 'check_assets_dir' ) );
 		add_action( 'update_option_siteground_optimizer_combine_css', array( $this->front_end_optimization, 'check_assets_dir' ), 10, 0 );
+		add_action( 'update_option_siteground_optimizer_combine_javascript', array( $this->front_end_optimization, 'check_assets_dir' ), 10, 0 );
 
 		// Schedule a cron job that will check for too big assets dir.
-		if (
-			! wp_next_scheduled( 'siteground_optimizer_check_assets_dir' ) &&
-			! Options::is_enabled( 'siteground_optimizer_file_caching' )
-		) {
+		if ( ! wp_next_scheduled( 'siteground_optimizer_check_assets_dir' ) ) {
 			wp_schedule_event( time(), 'daily', 'siteground_optimizer_check_assets_dir' );
-		}
-
-		if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
-			wp_clear_scheduled_hook( 'siteground_optimizer_check_assets_dir' );
 		}
 
 		// Bail if is admin page and any builders are enabled.

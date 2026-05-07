@@ -96,6 +96,16 @@ class Supercacher_Helper {
 			return false;
 		}
 
+		// Ensure the function exists before calling it.
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		// If the WPML plugins is active, remove the language post-fix from the home URL.
+		if ( \is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
+			$normalized_home_url = self::remove_wpml_language_postfix( $parts );
+		}
+
 		// Prepare the url parts for being used as regex.
 		$prepared_parts = array_map(
 			function( $item ) {
@@ -106,7 +116,7 @@ class Supercacher_Helper {
 		// Build the regular expression.
 		$regex = sprintf(
 			'/%s(%s)$/i',
-			preg_quote( home_url(), '/' ), // Add the home url in the beginning of the regex.
+			preg_quote( $normalized_home_url ?? home_url(), '/' ), // Add the home url in the beginning of the regex.
 			implode( '|', $prepared_parts ) // Then add each part.
 		);
 
@@ -200,4 +210,29 @@ class Supercacher_Helper {
 		return false;
 	}
 
+	/**
+	 * Removes the language post-fix from the home_url() that the WPML plugins adds.
+	 *
+	 * @param string $parts The URLs excluded from caching.
+	 *
+	 * @return null|string $normalized_home_url The home URL without the language post-fix.
+	 */
+	public static function remove_wpml_language_postfix( $parts ) {
+		$home_url_path = wp_parse_url( home_url(), PHP_URL_PATH );
+
+		// Checks if there is a language post-fix, eg. /fr.
+		$last_dir = basename( $home_url_path ?? '' );
+
+		if ( ! empty( $last_dir ) ) {
+			foreach ( $parts as $excluded_url ) {
+				if ( 1 === strpos( $excluded_url, $last_dir ) ) {
+					$normalized_home_url = rtrim( str_replace( '/' . $last_dir, '', home_url() ), '/' );
+
+					return $normalized_home_url;
+				}
+			}
+		}
+
+		return null;
+	}
 }
